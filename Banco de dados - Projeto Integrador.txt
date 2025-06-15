@@ -1,0 +1,33 @@
+[Produto]
+- id (PK)
+- nome
+- quantidade
+- categoria_id (FK)
+- fornecedor_id (FK)
+
+[Categoria]
+- id (PK)
+- nome
+
+[Fornecedor]
+- id (PK)
+- nome
+- telefone
+
+[EntradaEstoque]
+- id (PK)
+- produto_id (FK)
+- quantidade
+- data
+
+[SaidaEstoque]
+- id (PK)
+- produto_id (FK)
+- quantidade
+- data
+
+[Usuario]
+- id (PK)
+- nome
+- email
+- perfil

@@ -1,0 +1,22 @@
+                                             Informações das Tabelas
+
+
+-- Inserir categorias
+INSERT INTO Categoria (nome) VALUES ('Bebidas'), ('Alimentos'), ('Limpeza');
+
+-- Inserir fornecedores
+INSERT INTO Fornecedor (nome, telefone) VALUES 
+('Distribuidora Rio', '(21) 99999-0001'),
+('Alimentos do Sul', '(51) 98888-0002'),
+('Limpeza Total', '(11) 97777-0003');
+
+-- Inserir produtos
+INSERT INTO Produto (nome, quantidade, categoria_id, fornecedor_id) VALUES 
+('Coca-Cola 2L', 50, 1, 1),
+('Arroz 5kg', 30, 2, 2),
+('Sabão em pó 1kg', 20, 3, 3);
+
+-- Inserir usuários
+INSERT INTO Usuario (nome, email, perfil) VALUES 
+('Admin', 'admin@empresa.com', 'administrador'),
+('Carlos', 'carlos@empresa.com', 'operador');

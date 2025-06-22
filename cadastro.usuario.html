@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastrar Usuário - MineStock</title>
+  <style>
+    body { font-family: Arial; background: #f5f5f5; padding: 20px; }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 { margin-bottom: 20px; }
+    label { display: block; margin-top: 15px; margin-bottom: 5px; }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Cadastrar Novo Usuário</h2>
+
+    <form>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome">
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha">
+
+      <label for="perfil">Perfil:</label>
+      <select id="perfil" name="perfil">
+        <option value="comum">Comum</option>
+        <option value="admin">Administrador</option>
+      </select>
+
+      <button type="submit">Salvar Usuário</button>
+    </form>
+  </div>
+
+</body>
+</html>

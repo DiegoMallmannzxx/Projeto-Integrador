@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - MineStock</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+    }
+
+    .menu-lateral {
+      width: 220px;
+      background-color: #f1f1f1;
+      padding: 20px;
+      border-right: 1px solid #ccc;
+    }
+
+    .menu-lateral h3 {
+      margin-bottom: 20px;
+    }
+
+    .menu-lateral ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu-lateral li {
+      margin: 10px 0;
+    }
+
+    .menu-lateral a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .conteudo {
+      flex: 1;
+      padding: 30px;
+      background-color: #ffffff;
+    }
+
+    .conteudo h2 {
+      margin-bottom: 20px;
+    }
+
+    .info-box {
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .movimentacoes ul {
+      padding-left: 20px;
+    }
+
+    .movimentacoes li {
+      color: #777;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-lateral">
+    <h3>MineStock</h3>
+    <ul>
+      <li><a href="#">Produtos</a></li>
+      <li><a href="#">Entradas</a></li>
+      <li><a href="#">Saídas</a></li>
+      <li><a href="#">Relatórios</a></li>
+      <li><a href="#">Usuários (admin)</a></li>
+    </ul>
+  </div>
+
+  <div class="conteudo">
+    <h2>Bem-vindo, [Nome]</h2>
+
+    <div class="info-box">
+      <p><strong>Produtos em estoque:</strong> <span id="estoqueTotal">-</span></p>
+      <p><strong>Itens com estoque baixo:</strong> <span id="estoqueBaixo">-</span></p>
+    </div>
+
+    <div class="info-box movimentacoes">
+      <p><strong>Últimas movimentações:</strong></p>
+      <ul id="listaMovimentacoes">
+        <li>Nenhuma movimentação registrada.</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>

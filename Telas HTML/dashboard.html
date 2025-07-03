@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - MineStock</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+    }
+
+    .menu-lateral {
+      width: 220px;
+      background-color: #f1f1f1;
+      padding: 20px;
+      border-right: 1px solid #ccc;
+    }
+
+    .menu-lateral h3 {
+      margin-bottom: 20px;
+    }
+
+    .menu-lateral ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu-lateral li {
+      margin: 10px 0;
+    }
+
+    .menu-lateral a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .conteudo {
+      flex: 1;
+      padding: 30px;
+      background-color: #ffffff;
+    }
+
+    .conteudo h2 {
+      margin-bottom: 20px;
+    }
+
+    .info-box {
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-lateral">
+    <h3>MineStock</h3>
+    <ul>
+      <li><a href="cadastro.produtos.html">Cadastro de Produtos</a></li>
+      <li><a href="entrada.estoque.html">Entradas</a></li>
+      <li><a href="saida.estoque.html">Saídas</a></li>
+      <li><a href="relatorio.html">Relatórios</a></li>
+      <li><a href="listar.estoque.html">Estoque</a></li>
+      <li><a href="cadastro.fornecedor.html">Fornecedor</a></li>
+      <li><a href="cadastro.categoria.html">Categorias</a></li>
+      <li><a href="cadastro.usuario.html">Usuários (admin)</a></li>
+    </ul>
+  </div>
+
+  <div class="conteudo">
+    <h2>Bem-vindo, <span id="nomeUsuario">[Nome]</span></h2>
+
+    <div class="info-box movimentacoes">
+      <p><strong>Últimas Movimentações:</strong></p>
+      <div id="tabelaMovimentacoes">
+        Carregando...
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Nome do usuário logado
+    document.getElementById("nomeUsuario").textContent = localStorage.getItem("usuario") || "Usuário";
+
+    // Buscar últimas 10 movimentações
+    fetch("relatorio.php?ultimas=10")
+      .then(res => res.json())
+      .then(data => {
+        const div = document.getElementById("tabelaMovimentacoes");
+        if (!data || data.length === 0) {
+          div.innerHTML = "<p>Nenhuma movimentação registrada.</p>";
+          return;
+        }
+
+        let html = `
+          <table>
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Fornecedor</th>
+                <th>Quantidade</th>
+                <th>Tipo</th>
+                <th>Data</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        data.forEach(item => {
+          html += `
+            <tr>
+              <td>${item.produto}</td>
+              <td>${item.fornecedor}</td>
+              <td>${item.quantidade}</td>
+              <td>${item.tipo.toUpperCase()}</td>
+              <td>${item.data}</td>
+            </tr>
+          `;
+        });
+
+        html += "</tbody></table>";
+        div.innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById("tabelaMovimentacoes").innerHTML = "<p>Erro ao carregar movimentações.</p>";
+      });
+  </script>
+
+</body>
+</html>
